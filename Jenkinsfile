@@ -4,24 +4,24 @@ pipeline {
     stage('Build') {
       steps {
         echo 'Building'
-        sh '''sh "chmod +x -R ${env.WORKSPACE}"
-jenkins/build.sh'''
+        sh 'chmod +x -R ${env.WORKSPACE}'
+        sh 'jenkins/build.sh'
       }
     }
 
     stage('Test') {
       steps {
         echo 'Testing'
-        sh '''sh "chmod +x -R ${env.WORKSPACE}"
-jenkins/test-all.sh'''
+        sh 'chmod +x -R ${env.WORKSPACE}'
+        sh 'jenkins/test-all.sh'
       }
     }
 
     stage('Deploy') {
       steps {
         echo 'Deploying'
-        sh '''sh "chmod +x -R ${env.WORKSPACE}"
-jenkins/deploy.sh'''
+        sh 'chmod +x -R ${env.WORKSPACE}'
+        sh 'jenkins/deploy.sh'
       }
     }
 
