@@ -9,10 +9,30 @@ pipeline {
     }
 
     stage('Test') {
-      steps {
-        echo 'Testing'
-        sh './mvnw verify'
-        junit 'target/**/*.xml'
+      parallel {
+        stage('Test') {
+          steps {
+            echo 'Testing'
+            sh './mvnw verify'
+            junit 'target/**/*.xml'
+          }
+        }
+
+        stage('Integration Testing') {
+          steps {
+            echo 'Running Integration Tests'
+          }
+        }
+
+        stage('Performance Testing') {
+          steps {
+            timeout(time: 10) {
+              echo 'Performance Testing'
+            }
+
+          }
+        }
+
       }
     }
 
