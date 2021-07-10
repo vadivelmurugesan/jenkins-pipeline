@@ -41,6 +41,7 @@ pipeline {
         branch 'main'
       }
       steps {
+        input(message: 'Shall we deploy?', ok: 'Yes')
         echo 'Deployed'
       }
     }
