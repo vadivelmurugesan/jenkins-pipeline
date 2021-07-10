@@ -37,7 +37,11 @@ pipeline {
     }
 
     stage('Deploy') {
+      when {
+        branch 'main'
+      }
       steps {
+        input(message: 'Shall we deploy?', ok: 'Yes')
         echo 'Deployed'
       }
     }
