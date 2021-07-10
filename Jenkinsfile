@@ -4,24 +4,20 @@ pipeline {
     stage('Build') {
       steps {
         echo 'Building'
-        sh "chmod +x -R '${env.WORKSPACE}'"
-        sh 'jenkins/build.sh'
+        sh './mvnw clean install'
       }
     }
 
     stage('Test') {
       steps {
         echo 'Testing'
-        sh "chmod +x -R '${env.WORKSPACE}'"
-        sh 'jenkins/test-all.sh'
+        sh './mvnw verify'
       }
     }
 
     stage('Deploy') {
       steps {
-        echo 'Deploying'
-        sh "chmod +x -R '${env.WORKSPACE}'"
-        sh 'jenkins/deploy.sh'
+        echo 'Deployed'
       }
     }
 
