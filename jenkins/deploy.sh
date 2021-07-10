@@ -1,1 +1,0 @@
-echo "Deployed the application"
