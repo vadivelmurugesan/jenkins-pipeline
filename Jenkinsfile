@@ -4,21 +4,20 @@ pipeline {
     stage('Build') {
       steps {
         echo 'Building'
-        sh 'jenkins/build.sh'
+        sh './mvnw clean install'
       }
     }
 
     stage('Test') {
       steps {
         echo 'Testing'
-        sh 'jenkins/test-all.sh'
+        sh './mvnw verify'
       }
     }
 
     stage('Deploy') {
       steps {
-        echo 'Deploying'
-        sh 'jenkins/deploy.sh'
+        echo 'Deployed'
       }
     }
 
