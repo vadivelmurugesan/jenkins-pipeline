@@ -12,6 +12,7 @@ pipeline {
       steps {
         echo 'Testing'
         sh './mvnw verify'
+        junit 'target/**/*.xml'
       }
     }
 
